@@ -12,10 +12,15 @@ public:
     Reader(std::string filename);
 
     // Returns the loaded data in a Matrix data structure.
-    virtual Matrix& getMatrix() = 0;
+    Matrix& getMatrix();
 protected:
     Matrix matrix;
     std::ifstream file;
+
+    // Processes the file and creates a Matrix data structure from it. This
+    // is a pure virtual function, and it is implemented differently by each
+    // concrete readers.
+    virtual void process() = 0;
 };
 
 #endif
